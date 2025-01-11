@@ -46,12 +46,18 @@ const projects: Projects = {
   },
 };
 
-type Props = {
-  params: { slug: string };
-};
+interface Props {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = projects[params.slug as keyof typeof projects];
+export async function generateMetadata({
+  params,
+  searchParams,
+}: Props): Promise<Metadata> {
+  const project = projects[params.slug];
 
   if (!project) {
     return {
@@ -65,8 +71,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ProjectPage({ params }: Props) {
-  const project = projects[params.slug as keyof typeof projects];
+export default async function ProjectPage({ params, searchParams }: Props) {
+  const project = projects[params.slug];
 
   if (!project) {
     notFound();

@@ -46,14 +46,11 @@ const projects: Projects = {
   },
 };
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
+type Props = {
+  params: { slug: string };
+};
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects[params.slug as keyof typeof projects];
 
   if (!project) {
@@ -68,7 +65,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function ProjectPage({ params }: PageProps) {
+export default async function ProjectPage({ params }: Props) {
   const project = projects[params.slug as keyof typeof projects];
 
   if (!project) {

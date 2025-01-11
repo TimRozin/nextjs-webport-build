@@ -3,8 +3,19 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { notFound } from "next/navigation";
 
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  overview: string;
+};
+
+type Projects = {
+  [key: string]: Project;
+};
+
 // This would typically come from a database or CMS
-const projects = {
+const projects: Projects = {
   "project-one": {
     title: "Project One",
     description: "A detailed description of project one.",
@@ -33,17 +44,6 @@ const projects = {
     overview:
       "Project four is a real-time application that leverages cloud services for scalability.",
   },
-};
-
-type Project = {
-  title: string;
-  description: string;
-  technologies: string[];
-  overview: string;
-};
-
-type Projects = {
-  [key: string]: Project;
 };
 
 interface PageProps {

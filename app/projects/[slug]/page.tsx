@@ -50,13 +50,9 @@ interface Props {
   params: {
     slug: string;
   };
-  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export async function generateMetadata({
-  params,
-  searchParams,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects[params.slug];
 
   if (!project) {
@@ -71,7 +67,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectPage({ params, searchParams }: Props) {
+export default async function ProjectPage({ params }: Props) {
   const project = projects[params.slug];
 
   if (!project) {

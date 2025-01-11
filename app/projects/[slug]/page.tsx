@@ -47,13 +47,15 @@ const projects: Projects = {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = projects[params.slug];
+  const resolvedParams = await params;
+  const project = projects[resolvedParams.slug];
 
   if (!project) {
     return {
@@ -68,7 +70,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const project = projects[params.slug];
+  const resolvedParams = await params;
+  const project = projects[resolvedParams.slug];
 
   if (!project) {
     notFound();

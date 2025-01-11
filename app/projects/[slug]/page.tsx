@@ -35,13 +35,25 @@ const projects = {
   },
 };
 
-interface Props {
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  overview: string;
+};
+
+type Projects = {
+  [key: string]: Project;
+};
+
+interface PageProps {
   params: {
     slug: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export function generateMetadata({ params }: PageProps): Metadata {
   const project = projects[params.slug as keyof typeof projects];
 
   if (!project) {
@@ -56,7 +68,7 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function ProjectPage({ params }: Props) {
+export default function ProjectPage({ params }: PageProps) {
   const project = projects[params.slug as keyof typeof projects];
 
   if (!project) {

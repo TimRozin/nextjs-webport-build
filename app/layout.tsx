@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Ubuntu } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { Providers } from "./providers";
 
-const ubuntu = Ubuntu({
-  weight: ["300", "400", "500", "700"],
+const workSans = Work_Sans({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={ubuntu.className}>
+      <body className={workSans.className}>
         <Providers>
           <div className="flex min-h-screen">
             <div className="border-r bg-background">

@@ -31,7 +31,7 @@ export function Sidebar() {
         <SheetContent side="left" className="w-[240px] sm:w-[280px]">
           <div className="flex flex-col h-full">
             <div className="px-1 py-6">
-              <h2 className="mb-6 px-4 text-lg font-semibold">Navigation</h2>
+              <h2 className="mb-6 px-4 text-lg font-medium">Navigation</h2>
               <SidebarNav items={sidebarNavItems} />
             </div>
             <div className="mt-auto px-5 py-4 border-t">
@@ -46,7 +46,7 @@ export function Sidebar() {
         <div className="flex flex-col h-full">
           <div className="flex-1 space-y-4 py-4">
             <div className="px-3 py-2">
-              <h2 className="mb-2 px-4 text-lg font-semibold">Navigation</h2>
+              <h2 className="mb-2 px-4 text-lg font-medium">Navigation</h2>
               <SidebarNav items={sidebarNavItems} />
             </div>
           </div>
